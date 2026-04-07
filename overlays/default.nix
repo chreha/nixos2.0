@@ -1,6 +1,11 @@
 # This file defines overlays
-{inputs, ...}: {
+{ inputs, ... }:
+{
 
+  # This adds community-maintained flake for VS Code extensions referenced with with pkgs.vscode-marketplace;
+  # The official versions of this flake are referenced using pkgs.vscode-extensions
+  # but this official channel has a more limited offering of extensions. use official if available, otherwise
+  # use the community-maintained one
   vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
 
   # This one brings our custom packages from the 'pkgs' directory

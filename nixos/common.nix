@@ -96,6 +96,12 @@
     };
   };
 
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "both";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Explicitly disable grub to prevent the error
@@ -103,6 +109,15 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+    allowedTCPPorts = [ 3389 ];
+    trustedInterfaces = [
+      "docker0"
+      "tailscale0"
+    ];
+  };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -121,4 +136,21 @@
   environment.systemPackages = with pkgs; [
     vim
   ];
+
+  users.defaultUserShell = pkgs.fish;
+
+  programs.fish = {
+    enable = true;
+    shellAliases = with pkgs; {
+      allowBrian = "ssh ssh_reverse_proxy@100.76.100.18 -R 2222:localhost:22 -T -N";
+
+      use-frankfurt-tunnel = "sudo tailscale set --exit-node=100.91.146.28";
+      use-richmond-tunnel = "sudo tailscale set --exit-node=";
+      use-personal-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519.personal";
+      use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519";
+
+      rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#(hostname)";
+      rebuild-user = "home-manager switch --flake $HOME/dotfiles#(whoami)@(hostname) -b backup";
+    };
+  };
 }

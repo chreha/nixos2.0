@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  nixpkgs = {    
+  nixpkgs = {
     config = {
       allowUnfree = true;
     };
@@ -9,9 +9,20 @@
 
   # Common programs every user should have
   programs.home-manager.enable = true;
-  programs.git = {
+  packages = with pkgs; [
+    google-chrome
+    slack
+    discord
+  ];
+
+  firefox = {
     enable = true;
-    # You can put your shared git settings here!
+    profiles.charlie = {
+      search.default = "ddg";
+      settings = {
+        "browser.startup.homepage" = "https://nixos.org";
+      };
+    };
   };
 
   # Nicely reload system units when changing configs
