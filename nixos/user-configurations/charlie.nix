@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  user.users.charlie = {
+  users.users.charlie = {
     isNormalUser = true;
     description = "General System User - Charlie";
     extraGroups = [

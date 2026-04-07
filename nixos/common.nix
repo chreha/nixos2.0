@@ -80,9 +80,12 @@
     };
   };
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # Explicitly disable grub to prevent the error
+  boot.loader.grub.enable = false;
+
   environment.systemPackages = with pkgs; [
-    git
     vim
-    firefox
   ];
 }
