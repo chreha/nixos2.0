@@ -39,24 +39,6 @@
     ];
   };
 
-  fileSystems."/var/lib/containers/storage/overlay" = {
-    device = "/var/lib/containers/storage/overlay";
-    fsType = "none";
-    options = [ "bind" ];
-  };
-
-  fileSystems."/var/lib/containers/storage/overlay-containers/6450073351fe61050f63e4f310fdad7418b859fa62679c91592acd64bdd6a6f8/userdata/shm" =
-    {
-      device = "shm";
-      fsType = "tmpfs";
-    };
-
-  fileSystems."/var/lib/containers/storage/overlay/af87b214aec8160781e906854b701c2d12d3bebf3ddf86f7243aa614af20dacc/merged" =
-    {
-      device = "overlay";
-      fsType = "overlay";
-    };
-
   swapDevices = [
     { device = "/dev/disk/by-uuid/e88b4b68-13f7-4c78-85d2-7945e9834624"; }
   ];
