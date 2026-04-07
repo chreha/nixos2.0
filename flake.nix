@@ -12,6 +12,9 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # community-maintained flake for VS Code Marketplace
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs =
@@ -53,8 +56,7 @@
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        # FIXME replace with your hostname
+      nixosConfigurations = {        
         the-toad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
@@ -73,11 +75,14 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        # FIXME replace with your username@hostname
+      homeConfigurations = {        
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure
+         pkgs = import nixpkgs {
+          system = "x86_64-linux";          
+          # Pull the overlays directly from your flake's output
+          overlays = builtins.attrValues self.overlays; 
+        };
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <

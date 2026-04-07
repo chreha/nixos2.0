@@ -14,6 +14,16 @@
 
   networking.hostName = "the-toad"; # unique to the primary desktop system
 
+# In /etc/nixos/configuration.nix
+programs.nix-ld.enable = true;
+programs.nix-ld.libraries = with pkgs; [
+  # Add common libraries extensions often need
+  stdenv.cc.cc
+  openssl
+  curl
+  zlib
+];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.05";
 }
