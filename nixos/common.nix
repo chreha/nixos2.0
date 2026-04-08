@@ -102,6 +102,8 @@
     useRoutingFeatures = "both";
   };
 
+  virtualisation.docker.enable = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Explicitly disable grub to prevent the error
@@ -150,7 +152,7 @@
       use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519";
 
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#(hostname)";
-      rebuild-user = "home-manager switch --flake $HOME/dotfiles#(whoami)@(hostname) -b backup";
+      rebuild-user = "home-manager switch --flake $HOME/dotfiles#(whoami)@(hostname) -b backup-$(date +%Y%m%d)";
     };
   };
 }

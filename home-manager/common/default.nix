@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   nixpkgs = {
@@ -6,21 +6,45 @@
       allowUnfree = true;
     };
   };
+  home = {
+    packages = with pkgs; [
+      google-chrome
+      slack
+      discord
+      dracula-theme
+    ];
+  };
 
-  # Common programs every user should have
-  programs.home-manager.enable = true;
-  packages = with pkgs; [
-    google-chrome
-    slack
-    discord
-  ];
+  programs = {
+    home-manager = {
+      enable = true;
+    };
+    firefox = {
+      enable = true;
+      profiles.charlie = {
+        search.default = "ddg";
+        settings = {
+          "browser.startup.homepage" = "https://nixos.org";
+        };
+      };
+    };
+    plasma = {
+      enable = true;
+    };
+    konsole = {
+      enable = true;
+      defaultProfile = "NixProfile";
 
-  firefox = {
-    enable = true;
-    profiles.charlie = {
-      search.default = "ddg";
-      settings = {
-        "browser.startup.homepage" = "https://nixos.org";
+      customColorSchemes = {
+        Dracula = "${inputs.dracula-konsole}/Dracula.colorscheme";
+      };
+      profiles.NixProfile = {
+        name = "NixProfile";
+        font = {
+          name = "JetBrainsMono Nerd Font";
+          size = 16; # Set your desired terminal font size here
+        };
+        colorScheme = "Dracula";
       };
     };
   };

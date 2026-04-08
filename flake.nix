@@ -15,6 +15,19 @@
 
     # community-maintained flake for VS Code Marketplace
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    # allows plasma settings to be set in home-manager
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    # terminal theme
+    dracula-konsole = {
+      url = "github:dracula/konsole";
+      flake = false; # This is a non-flake repo, we just want the files
+    };
   };
 
   outputs =
@@ -22,6 +35,7 @@
       self,
       nixpkgs,
       home-manager,
+      plasma-manager,
       ...
     }@inputs:
     let
@@ -56,7 +70,7 @@
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {        
+      nixosConfigurations = {
         the-toad = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
@@ -75,18 +89,19 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {        
+      homeConfigurations = {
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
-         pkgs = import nixpkgs {
-          system = "x86_64-linux";          
-          # Pull the overlays directly from your flake's output
-          overlays = builtins.attrValues self.overlays; 
-        };
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            # Pull the overlays directly from your flake's output
+            overlays = builtins.attrValues self.overlays;
+          };
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/charlie.nix
+            inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
       };
