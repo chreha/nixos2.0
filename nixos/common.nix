@@ -139,6 +139,8 @@
     vim
   ];
 
+  programs.ssh.startAgent = true;
+
   users.defaultUserShell = pkgs.fish;
 
   programs.fish = {

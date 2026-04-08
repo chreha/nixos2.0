@@ -64,14 +64,44 @@
         "editor.fontSize" = 18;
         "editor.formatOnSave" = true;
         "terminal.integrated.defaultProfile.linux" = "fish"; # Set Fish as default terminal
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-        "nix.formatterPath" = "nixfmt";
+
+        # formatting
+        "[nix]" = {
+          "enableLanguageServer" = true;
+          "serverPath" = "nil";
+          "formatterPath" = "nixfmt";
+        };
+        "[svelte]" = {
+          "editor.defaultFormatter" = "svelte.svelte-vscode";
+        };
+        "[javascript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[typescript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[css]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[html]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[json]" = {
+          "editor.defaultFormatter" = "vscode.json-language-features";
+        };
+        "[tailwindCSS]" = {
+          "emmetCompletions" = true;
+          "tailwindCSS.includeLanguages" = {
+            "svelte" = "html";
+          };
+        };
+
         "codeium.linux.languageServerPath" = "${pkgs.codeium}/bin/codeium_language_server";
         "codeium.enableConfig" = {
           "*" = true;
           "nix" = true;
         };
+        "svelte.enable-ts-plugin" = true;
       };
     };
   };
