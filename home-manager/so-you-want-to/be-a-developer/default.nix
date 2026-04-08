@@ -12,6 +12,7 @@
       nil
       nixfmt-rfc-style
       codeium
+      google-chrome
     ];
   };
   programs.vscode = {

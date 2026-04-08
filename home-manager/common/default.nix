@@ -8,9 +8,6 @@
   };
   home = {
     packages = with pkgs; [
-      google-chrome
-      slack
-      discord
       dracula-theme
     ];
   };

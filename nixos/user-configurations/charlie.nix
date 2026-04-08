@@ -2,7 +2,7 @@
 {
   users.users.charlie = {
     isNormalUser = true;
-    description = "General System User - Charlie";
+    description = "Charlie";
     extraGroups = [
       "wheel"
       "networkmanager"
