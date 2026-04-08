@@ -25,17 +25,21 @@
       userName = "charles.hreha@gmail.com";
       imap.host = "imap.gmail.com";
       smtp.host = "smtp.gmail.com";
-      # Standard ports for Google
       imap.port = 993;
       smtp.port = 465;
-      # TLS is required for Gmail
       imap.tls.enable = true;
       smtp.tls.enable = true;
 
+      # required because gmail does not follow normal imap folder conventions
+      folders = {
+        sent = "[Gmail]/Sent Mail";
+        trash = "[Gmail]/Trash";
+        drafts = "[Gmail]/Drafts";
+      };
       thunderbird = {
         enable = true;
         profiles = [ "default" ];
-        # Even personal Gmail accounts often require OAuth2 now
+        # require OAuth2
         settings = id: {
           "mail.server.server_${id}.authMethod" = 10;
           "mail.smtpserver.smtp_${id}.authMethod" = 10;
@@ -58,10 +62,18 @@
       thunderbird = {
         enable = true;
         profiles = [ "default" ];
+        # require OAuth2
         settings = id: {
           "mail.server.server_${id}.authMethod" = 10; # 10 = OAuth2
           "mail.smtpserver.smtp_${id}.authMethod" = 10;
         };
+      };
+
+      # required because gmail does not follow normal imap folder conventions
+      folders = {
+        sent = "[Gmail]/Sent Mail";
+        trash = "[Gmail]/Trash";
+        drafts = "[Gmail]/Drafts";
       };
     };
   };
