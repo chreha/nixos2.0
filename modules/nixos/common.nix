@@ -1,7 +1,5 @@
 {
   inputs,
-  lib,
-  config,
   pkgs,
   ...
 }:
@@ -23,7 +21,6 @@
     ];
     config.allowUnfree = true;
   };
-
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
     vim

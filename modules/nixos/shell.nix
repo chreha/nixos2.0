@@ -16,8 +16,8 @@
       use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519";
 
       # Dynamic Rebuilds (Works on any host)
-      rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";      
-      rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)"
+      rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";
+      rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)";
     };
   };
 

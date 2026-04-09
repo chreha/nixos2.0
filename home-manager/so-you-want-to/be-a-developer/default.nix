@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home = {
+    sessionVariables = {
+      NIX_PATH = "nixpkgs=${inputs.nixpkgs}";
+    };
     packages = with pkgs; [
       nodejs_20
       bun
@@ -9,8 +12,8 @@
       dotnet-repl
       dotnet-runtime
       postman
-      nil
       codeium
+      nixd
       google-chrome
     ];
   };
@@ -47,7 +50,7 @@
           graphql.vscode-graphql-syntax
 
           # nix devtools
-          bbenoist.nix
+          #bbenoist.nix
           jnoortheen.nix-ide
 
           # svelte devtools
@@ -63,14 +66,10 @@
       userSettings = {
         "editor.fontSize" = 18;
         "editor.formatOnSave" = true;
+        "editor.definitionLinkOpensInPeek" = false;
+        "editor.gotoLocation.multipleDefinitions" = "goto";
         "terminal.integrated.defaultProfile.linux" = "fish"; # Set Fish as default terminal
-
         # formatters
-        "[nix]" = {
-          "enableLanguageServer" = true;
-          "serverPath" = "nil";
-          "formatterPath" = "nixfmt";
-        };
         "[svelte]" = {
           "editor.defaultFormatter" = "svelte.svelte-vscode";
         };
@@ -94,6 +93,32 @@
           "tailwindCSS.includeLanguages" = {
             "svelte" = "html";
           };
+        };
+        #nix language server settigns
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
+        "nix.formatterPath" = "nixfmt";
+
+        "nix.serverSettings" = {
+          "nixd" = {
+            "nixpkgs" = {
+              "expr" = "import (builtins.getFlake \"/home/charlie/dotfiles\").inputs.nixpkgs { }";
+            };
+            "options" = {
+              "nixos" = {
+                "expr" = "(builtins.getFlake \"/home/charlie/dotfiles\").nixosConfigurations.the-toad.options";
+              };
+              "home-manager" = {
+                "expr" =
+                  "(builtins.getFlake \"/home/charlie/dotfiles\").homeConfigurations.\"charlie@the-toad\".options";
+              };
+            };
+          };
+        };
+
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          "editor.formatOnSave" = true;
         };
 
         "codeium.linux.languageServerPath" = "${pkgs.codeium}/bin/codeium_language_server";
