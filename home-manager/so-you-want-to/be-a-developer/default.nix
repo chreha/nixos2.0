@@ -10,7 +10,6 @@
       dotnet-runtime
       postman
       nil
-      nixfmt-rfc-style
       codeium
       google-chrome
     ];
