@@ -81,7 +81,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            ./nixos/host-configurations/the-frog/configuration.nix
           ];
         };
       };
@@ -90,6 +90,20 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
+          # Home-manager requires 'pkgs' instance
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            # Pull the overlays directly from your flake's output
+            overlays = builtins.attrValues self.overlays;
+          };
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            # > Our main home-manager configuration file <
+            ./home-manager/profiles/charlie
+            inputs.plasma-manager.homeModules.plasma-manager
+          ];
+        };
+        "charlie@the-frog" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
           pkgs = import nixpkgs {
             system = "x86_64-linux";
