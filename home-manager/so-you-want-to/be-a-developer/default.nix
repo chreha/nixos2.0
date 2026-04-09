@@ -66,7 +66,7 @@
         "editor.formatOnSave" = true;
         "terminal.integrated.defaultProfile.linux" = "fish"; # Set Fish as default terminal
 
-        # formatting
+        # formatters
         "[nix]" = {
           "enableLanguageServer" = true;
           "serverPath" = "nil";

@@ -100,7 +100,7 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/charlie.nix
+            ./home-manager/profiles/charlie
             inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
