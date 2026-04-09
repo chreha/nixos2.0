@@ -1,8 +1,8 @@
 { inputs, pkgs, ... }:
 
-{  
+{
   home = {
-    packages = with pkgs; [      
+    packages = with pkgs; [
       slack
       discord
     ];
@@ -11,11 +11,11 @@
     thunderbird = {
       enable = true;
       profiles.default = {
-      isDefault = true;
-      settings = {
-        "privacy.donottrackheader.enabled" = true;
+        isDefault = true;
+        settings = {
+          "privacy.donottrackheader.enabled" = true;
+        };
       };
     };
-    }
-  }
+  };
 }
