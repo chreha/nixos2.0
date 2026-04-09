@@ -3,4 +3,11 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  common = import ./common.nix;
+  development = import ./development.nix;
+  plasma-desktop = import ./plasma-desktop.nix;
+  networking = import ./networking.nix;
+  nvidia = import ./nvidia.nix;
+  system = import ./system.nix;
+  shell = import ./shell.nix;
 }

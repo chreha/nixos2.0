@@ -67,6 +67,9 @@
       # These are usually stuff you would upstream into home-manager
       homeManagerModules = import ./modules/home-manager;
 
+      # Add this line to export your user configurations
+      userProfiles = import ./nixos/users;
+
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
@@ -74,14 +77,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/host-configurations/the-toad/configuration.nix
+            ./nixos/hosts/the-toad/configuration.nix
           ];
         };
         the-frog = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/host-configurations/the-frog/configuration.nix
+            ./nixos/hosts/the-frog/configuration.nix
           ];
         };
       };
