@@ -19,7 +19,13 @@
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";
       rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)";
     };
+    interactiveShellInit = ''
+      direnv hook fish | source
+    '';
   };
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   # SSH Agent and Server settings
   programs.ssh.startAgent = true;

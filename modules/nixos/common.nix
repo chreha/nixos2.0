@@ -11,6 +11,8 @@
     inputs.self.nixosModules.plasma-desktop
     inputs.self.nixosModules.development
     inputs.self.nixosModules.shell
+
+    inputs.agenix.nixosModules.default
   ];
 
   nixpkgs = {

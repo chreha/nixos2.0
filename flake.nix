@@ -9,12 +9,19 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # TODO: look into Vaultwarden to setup on server
+    # TODO: look into Jellyfin setup on server
+    # TODO: look into NAS setup on server
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # community-maintained flake for VS Code Marketplace
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    # secret management
+    agenix.url = "github:ryantm/agenix";
 
     # allows plasma settings to be set in home-manager
     plasma-manager = {
@@ -52,6 +59,13 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
+      devShells = forAllSystems (system: {
+        default = nixpkgs.legacyPackages.${system}.mkShell {
+          packages = [
+            inputs.agenix.packages.${system}.default
+          ];
+        };
+      });
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
