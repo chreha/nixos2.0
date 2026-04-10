@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  constants,
+  config,
+  ...
+}:
 {
 
   age.secrets.nas-credentials = {
@@ -35,8 +40,8 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  fileSystems."/mnt/zima-nas" = {
-    device = "//zimaboard2-1/ThePond";
+  fileSystems."/mnt/the-pond" = {
+    device = constants.nasPath;
     fsType = "cifs";
     options = [
       # Crucial: Automount waits until you access the folder to connect

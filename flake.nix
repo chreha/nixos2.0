@@ -57,6 +57,7 @@
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
+      myConstants = import ./constants;
     in
     {
       devShells = forAllSystems (system: {
@@ -88,14 +89,21 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         the-toad = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            constants = myConstants;
+
+          };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/hosts/the-toad/configuration.nix
           ];
         };
         the-frog = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/hosts/the-frog/configuration.nix
