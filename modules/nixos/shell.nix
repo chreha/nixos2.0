@@ -18,9 +18,31 @@
       # Dynamic Rebuilds (Works on any host)
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";
       rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)";
+      remove-garbage = "nix-clean-deep";
     };
     interactiveShellInit = ''
       direnv hook fish | source
+
+      function nix-clean-deep
+        echo "🧹 Starting deep Nix cleanup (keeping last 3 generations)..."
+
+        # 1. Clear User / Home Manager generations (keep last 3)
+        echo "-> Cleaning User generations..."
+        nix-env --delete-generations +3
+        nix-collect-garbage -d
+
+        # 2. Clear System generations (keep last 3)
+        echo "-> Cleaning System generations (requires sudo)..."
+        sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3
+        sudo nix-collect-garbage -d
+
+        # 3. Deduplicate the store (hard-link identical files)
+        echo "-> Optimizing Nix store (this may take a moment)..."
+        sudo nix-store --optimise
+
+        echo "✅ Cleanup complete! Current /nix size:"
+        du -sh /nix
+      end
     '';
   };
 

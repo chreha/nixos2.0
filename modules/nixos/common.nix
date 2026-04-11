@@ -14,6 +14,11 @@
 
     inputs.agenix.nixosModules.default
   ];
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   nixpkgs = {
     overlays = [
