@@ -3,8 +3,8 @@
   # Set Fish as the default shell for all users
   users.defaultUserShell = pkgs.fish;
 
-  age.secrets.frog_to_toad_key = {
-    file = ../../secrets/frog_to_toad_key.age;
+  age.secrets.ssh-to-the-toad = {
+    file = ../../secrets/ssh-to-the-toad.age;
     owner = "charlie"; # Ensure this matches your login username
   };
 
