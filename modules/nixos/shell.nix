@@ -5,7 +5,8 @@
 
   age.secrets.ssh-to-the-toad = {
     file = ../../secrets/ssh-to-the-toad.age;
-    owner = "charlie"; # Ensure this matches your login username
+    owner = "charlie";
+    mode = "600";
   };
 
   programs.fish = {
