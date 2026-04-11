@@ -17,6 +17,22 @@
       google-chrome
     ];
   };
+  xdg.enable = true;
+  xdg.dataFile."kio/servicemenus/open-in-vscode.desktop" = {
+    text = ''
+      [Desktop Entry]
+      Type=Service
+      ServiceTypes=KonqPopupMenu/Plugin
+      MimeType=inode/directory;
+      Actions=openWithVSCode;
+      X-KDE-Priority=TopLevel
+
+      [Desktop Action openWithVSCode]
+      Name=Open with Code
+      Icon=vscode
+      Exec=code %f
+    '';
+  };
   programs.vscode = {
     enable = true;
     package = pkgs.vscode; # "pure" nix way everything will be managed through the nix store
