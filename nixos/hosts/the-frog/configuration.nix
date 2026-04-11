@@ -5,9 +5,9 @@
 }:
 {
   imports = [
+    inputs.self.userProfiles.charlie
     ./hardware-configuration.nix # unique to the primary desktop system
     inputs.self.nixosModules.common
-
   ];
 
   networking.hostName = "the-toad"; # unique to the primary desktop system
