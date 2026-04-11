@@ -14,6 +14,7 @@
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWc0PwJEhUp9iP475J94WohR3c1/8fp/B7AXs99lduc brian@two"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+8Cu4voMeOiSTeZ2C+Y0q1fHz2BQ4IfZ4TP9Cywili frog-to-toad"
     ];
   };
 }
