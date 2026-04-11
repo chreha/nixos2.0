@@ -13,5 +13,5 @@ let
 in
 {
   "nas-credentials.age".publicKeys = all_hosts;
-  "frog_to_toad_key.age".publicKeys = all_hosts;
+  "ssh-to-the-toad.age".publicKeys = all_hosts;
 }
