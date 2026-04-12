@@ -65,4 +65,23 @@
       "file_mode=0644"
     ];
   };
+  fileSystems."/mnt/the-toad-ark" = {
+    device = "//the-toad/Ark";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "nofail"
+      "_netdev"
+
+      # Guest access settings
+      "guest" # Tells cifs to connect without a password
+      "uid=1000" # Files will look like they are owned by the laptop user
+      "gid=100"
+      "dir_mode=0777" # Full read/write/execute for the laptop user
+      "file_mode=0666" # Full read/write for the laptop user
+    ];
+  };
+
 }
