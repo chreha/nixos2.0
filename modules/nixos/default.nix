@@ -10,4 +10,5 @@
   nvidia = import ./nvidia.nix;
   system = import ./system.nix;
   shell = import ./shell.nix;
+  steam = import ./steam.nix;
 }

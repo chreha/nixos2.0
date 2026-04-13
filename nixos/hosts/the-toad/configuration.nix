@@ -9,6 +9,7 @@
     ./hardware-configuration.nix # unique to the primary desktop system
     inputs.self.nixosModules.common
     inputs.self.nixosModules.nvidia
+    inputs.self.nixosModules.steam
   ];
 
   networking.hostName = "the-toad"; # unique to the primary desktop system

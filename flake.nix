@@ -9,7 +9,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # TODO: get the-frog moved over to this flake repo
     # TODO: look into setting up a nixOs server instead of zimaOS
     # TODO: look into Vaultwarden to setup on server
     # TODO: look into Jellyfin setup on server
@@ -126,7 +125,7 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie
+            ./home-manager/profiles/charlie/charlie-on-the-toad
             inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
