@@ -32,7 +32,7 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  age.secrets.ssh-to-the-toad = {
+  age.secrets.nas-credentials = {
     file = ../../secrets/nas-credentials.age;
     owner = "charlie";
     mode = "600";
