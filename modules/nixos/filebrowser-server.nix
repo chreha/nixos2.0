@@ -6,7 +6,10 @@
     volumes = [
       "/mnt/the-pond:/srv" # Point FileBrowser to your RAID
       "/var/lib/filebrowser/filebrowser.db:/database.db" # Persistent database
-      "/var/lib/filebrowser/settings.json:/config/settings.json"
+    ];
+    cmd = [
+      "--database"
+      "/database/filebrowser.db"
     ];
     user = "1000:100"; # Run as 'charlie' (uid 1000) and group 'users' (gid 100)
   };
