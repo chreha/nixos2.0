@@ -4,6 +4,7 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   common = import ./common.nix;
+  common-server = import ./common-server.nix;
   development = import ./development.nix;
   plasma-desktop = import ./plasma-desktop.nix;
   networking = import ./networking.nix;

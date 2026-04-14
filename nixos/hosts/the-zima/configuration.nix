@@ -8,7 +8,7 @@
   imports = [
     inputs.self.userProfiles.charlie
     ./hardware-configuration.nix # unique to the primary desktop system
-    inputs.self.nixosModules.common
+    inputs.self.nixosModules.common-server
   ];
 
   networking.hostName = "the-zima"; # unique to the primary desktop system
