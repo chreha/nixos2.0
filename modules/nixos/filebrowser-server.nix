@@ -14,4 +14,21 @@
     user = "1000:100"; # Run as 'charlie' (uid 1000) and group 'users' (gid 100)
   };
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "security" = "user";
+      };
+      "the-pond" = {
+        "path" = "/mnt/the-pond";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+      };
+    };
+  };
+
 }
