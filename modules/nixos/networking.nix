@@ -32,6 +32,11 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
+  age.secrets.ssh-to-the-toad = {
+    file = ../../secrets/nas-credentials.age;
+    owner = "charlie";
+    mode = "600";
+  };
   fileSystems."/mnt/the-pond" = {
     device = constants.nasPath;
     fsType = "cifs";
