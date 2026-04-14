@@ -28,6 +28,7 @@
 
   # Enable Docker daemon
   virtualisation.docker.enable = true;
+  virtualisation.oci-containers.backend = "docker";
 
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
