@@ -5,9 +5,6 @@
     (inputs.self + /home-manager/common)
     # this user profile's accounts
     ./accounts
-    # pull in the feature sets used on this user
-    (inputs.self + /home-manager/so-you-want-to/be-a-developer)
-    (inputs.self + /home-manager/so-you-want-to/be-a-communicator)
   ];
 
   # setup the home directory and user specific packages

@@ -89,6 +89,17 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
+        the-zima = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            constants = myConstants;
+
+          };
+          modules = [
+            # > Our main nixos configuration file <
+            ./nixos/hosts/the-zima/configuration.nix
+          ];
+        };
         the-toad = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
@@ -115,6 +126,19 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
+        "charlie@the-zima" = home-manager.lib.homeManagerConfiguration {
+          # Home-manager requires 'pkgs' instance
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            # Pull the overlays directly from your flake's output
+            overlays = builtins.attrValues self.overlays;
+          };
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            # > Our main home-manager configuration file <
+            ./home-manager/profiles/charlie/charlie
+          ];
+        };
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
           pkgs = import nixpkgs {
@@ -139,7 +163,7 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie
+            ./home-manager/profiles/charlie/charlie-on-the-frog
             inputs.plasma-manager.homeModules.plasma-manager
           ];
         };

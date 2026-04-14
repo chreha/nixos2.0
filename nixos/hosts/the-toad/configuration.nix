@@ -8,6 +8,8 @@
     inputs.self.userProfiles.charlie
     ./hardware-configuration.nix # unique to the primary desktop system
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.plasma-desktop
+    inputs.self.nixosModules.development
     inputs.self.nixosModules.nvidia
     inputs.self.nixosModules.steam
   ];

@@ -8,8 +8,6 @@
     # Feature modules
     inputs.self.nixosModules.system
     inputs.self.nixosModules.networking
-    inputs.self.nixosModules.plasma-desktop
-    inputs.self.nixosModules.development
     inputs.self.nixosModules.shell
 
     inputs.agenix.nixosModules.default
