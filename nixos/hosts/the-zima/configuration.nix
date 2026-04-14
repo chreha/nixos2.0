@@ -28,6 +28,16 @@
     "raid1"
   ];
 
+  fileSystems."/mnt/the-pond" = {
+    device = "/dev/disk/by-uuid/853331de-1871-7955-c974-f02433ea4eca";
+    fsType = "btrfs";
+    options = [
+      "defaults"
+      "nofail"
+      "compress=zstd"
+    ]; # zstd is great for btrfs performance
+  };
+
   # This allows NixOS to recognize the RAID members you found earlier
   environment.systemPackages = with pkgs; [ mdadm ];
 
