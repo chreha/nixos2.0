@@ -18,4 +18,5 @@ in
 {
   "nas-credentials.age".publicKeys = all_hosts;
   "ssh-to-the-toad.age".publicKeys = all_hosts;
+  "ssh-to-the-zima.age".publicKeys = all_hosts;
 }
