@@ -16,14 +16,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      PermitRootLogin = "yes";
-    };
-    permitRootLogin = "yes";
-  };
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
