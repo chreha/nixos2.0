@@ -5,14 +5,6 @@
   ...
 }:
 {
-
-  age.secrets.nas-credentials = {
-    file = ../../secrets/nas-credentials.age;
-    owner = "root";
-    group = "root";
-    mode = "600";
-  };
-
   # Enable networking via NetworkManager
   networking.networkmanager.enable = true;
 

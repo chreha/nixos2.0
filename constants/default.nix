@@ -1,4 +1,4 @@
 # constants.nix
 {
-  nasPath = "//zimaboard2-1/ThePond";
+  nasPath = "//the-zima:8080/the-pond";
 }
