@@ -136,7 +136,7 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie/charlie
+            ./home-manager/profiles/charlie
           ];
         };
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
