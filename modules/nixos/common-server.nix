@@ -25,6 +25,10 @@
     ];
     config.allowUnfree = true;
   };
+
+  # Enable Docker daemon
+  virtualisation.docker.enable = true;
+
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
     vim
@@ -41,12 +45,10 @@
     allowPing = true;
 
     # Port 3389 is the standard for RDP (Remote Desktop)
-    allowedTCPPorts = [ 3389 ];
-
-    # Trust internal interfaces so services can talk to each other
-    trustedInterfaces = [
-      "docker0"
-      "tailscale0"
+    allowedTCPPorts = [
+      22
+      3389
+      8080
     ];
   };
 

@@ -9,6 +9,7 @@
     inputs.self.userProfiles.charlie
     ./hardware-configuration.nix # unique to the primary desktop system
     inputs.self.nixosModules.common-server
+    inputs.self.nixosModules.firebrowser-server
   ];
 
   networking.hostName = "the-zima"; # unique to the primary desktop system
@@ -16,8 +17,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
-
-  networking.firewall.allowedTCPPorts = [ 22 ];
 
   # Enable software RAID support
   boot.swraid.enable = true;
