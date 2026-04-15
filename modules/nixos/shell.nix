@@ -8,6 +8,11 @@
     owner = "charlie";
     mode = "600";
   };
+  age.secrets.ssh-to-the-zima = {
+    file = ../../secrets/ssh-to-the-zima.age;
+    owner = "charlie";
+    mode = "600";
+  };
 
   programs.fish = {
     enable = true;
@@ -53,6 +58,11 @@
         Hostname the-toad
         User charlie
         IdentityFile ${config.age.secrets.ssh-to-the-toad.path}
+
+      Host the-zima
+        Hostname the-zima
+        User charlie
+        IdentityFile ${config.age.secrets.ssh-to-the-zima.path}
     '';
   };
 
