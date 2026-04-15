@@ -2,7 +2,7 @@
   ...
 }:
 {
-  description = "Configuration for laptop the-frog system";
+  # description = "Configuration for laptop the-frog system";
   imports = [
     ../../users/charlie
     ./hardware-configuration.nix

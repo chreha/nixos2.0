@@ -2,7 +2,7 @@
   ...
 }:
 {
-  description = "Configuration for desktop the-toad system";
+  # description = "Configuration for desktop the-toad system";
   imports = [
     ../../users/charlie
     ../../users/guest

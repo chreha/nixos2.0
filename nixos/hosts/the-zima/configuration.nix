@@ -3,7 +3,7 @@
   ...
 }:
 {
-  description = "Configuration for zimaboard mini-pc server";
+  # description = "Configuration for zimaboard mini-pc server";
   imports = [
     ../../users/charlie
     ./hardware-configuration.nix
