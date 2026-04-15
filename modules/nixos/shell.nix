@@ -3,17 +3,6 @@
   # Set Fish as the default shell for all users
   users.defaultUserShell = pkgs.fish;
 
-  age.secrets.ssh-to-the-toad = {
-    file = ../../secrets/ssh-to-the-toad.age;
-    owner = "charlie";
-    mode = "600";
-  };
-  age.secrets.ssh-to-the-zima = {
-    file = ../../secrets/ssh-to-the-zima.age;
-    owner = "charlie";
-    mode = "600";
-  };
-
   programs.fish = {
     enable = true;
     shellAliases = {
@@ -24,7 +13,7 @@
 
       # SSH Key Management
       use-personal-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519.personal";
-      use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519";
+      use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519.work";
 
       # Dynamic Rebuilds
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";

@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -41,9 +42,15 @@
 
   system.stateVersion = "25.11";
 
-  users.users.charlie.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdfqOg31FOaLYFtR00JalRK/j7HRcHAYkXR3t3tnKcF charlie@the-frog"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZTtndZISLL/CWmMauXvGvRDUXrRiwpMkmPuK5WzpV/ charlie@the-toad"
-  ];
+  age.secrets.personal_key = {
+    file = ../../../secrets/zima_personal.age; # Path to encrypted file in flake
+    path = "${config.home.homeDirectory}/.ssh/id_ed25519.personal";
+    mode = "0600";
+  };
+  age.secrets.work_key = {
+    file = ../../../secrets/zima_work.age; # Path to encrypted file in flake
+    path = "${config.home.homeDirectory}/.ssh/id_ed25519.work";
+    mode = "0600";
+  };
 
 }
