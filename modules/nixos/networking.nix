@@ -14,7 +14,10 @@
     allowPing = true;
 
     # Port 3389 is the standard for RDP (Remote Desktop)
-    allowedTCPPorts = [ 3389 ];
+    allowedTCPPorts = [
+      3389
+      22
+    ];
 
     # Trust internal interfaces so services can talk to each other
     trustedInterfaces = [
