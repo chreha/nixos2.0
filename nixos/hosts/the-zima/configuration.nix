@@ -37,20 +37,28 @@
     ];
   };
 
+  # This allows members of the 'keys' group to read the host key
+  services.openssh.hostKeys = [
+    {
+      path = "/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
+
+  # Ensure the group permissions are applied
+  systemd.services.ssh-keys-permissions = {
+    description = "Set permissions for SSH host keys";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.coreutils}/bin/chmod 640 /etc/ssh/ssh_host_ed25519_key";
+    };
+  };
+  systemd.tmpfiles.rules = [
+    "z /etc/ssh/ssh_host_ed25519_key 0640 root keys -"
+  ];
   # recognize the RAID members
   environment.systemPackages = with pkgs; [ mdadm ];
 
   system.stateVersion = "25.11";
-
-  age.secrets.personal_key = {
-    file = ../../../secrets/zima_personal.age; # Path to encrypted file in flake
-    path = "${config.home.homeDirectory}/.ssh/id_ed25519.personal";
-    mode = "0600";
-  };
-  age.secrets.work_key = {
-    file = ../../../secrets/zima_work.age; # Path to encrypted file in flake
-    path = "${config.home.homeDirectory}/.ssh/id_ed25519.work";
-    mode = "0600";
-  };
-
 }
