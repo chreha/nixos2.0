@@ -8,7 +8,7 @@
     ../../users/charlie
     ./hardware-configuration.nix
     ../../../modules/nixos/common-server.nix
-    ../../../modules/nixos/filebrowser-service.nix
+    ../../../modules/nixos/filebrowser-server.nix
   ];
 
   networking.hostName = "the-zima";
