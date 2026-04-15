@@ -1,13 +1,14 @@
-{ pkgs, ... }:
+{ ... }:
 {
   users.users.guest = {
     isNormalUser = true;
     description = "Guest";
     extraGroups = [
-      "wheel"
       "networkmanager"
-      "video"
-      "audio"
     ];
   };
+  # Wipe the guest home directory on every boot
+  systemd.tmpfiles.rules = [
+    "R /home/guest 0700 guest users -"
+  ];
 }

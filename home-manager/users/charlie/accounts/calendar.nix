@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # setup calendar accounts for this user, the packages are enabled and configured in the feature sets
   # however the user specific account settings are managed here

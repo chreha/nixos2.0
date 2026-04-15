@@ -1,8 +1,7 @@
 {
-  description = "Your new nix config";
+  description = "Configurations for my systems";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -43,7 +42,6 @@
       self,
       nixpkgs,
       home-manager,
-      plasma-manager,
       ...
     }@inputs:
     let
@@ -93,7 +91,6 @@
           specialArgs = {
             inherit inputs;
             constants = myConstants;
-
           };
           modules = [
             # > Our main nixos configuration file <
@@ -104,7 +101,6 @@
           specialArgs = {
             inherit inputs;
             constants = myConstants;
-
           };
           modules = [
             # > Our main nixos configuration file <
@@ -133,10 +129,14 @@
             # Pull the overlays directly from your flake's output
             overlays = builtins.attrValues self.overlays;
           };
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie
+            ./home-manager/hosts/the-zima
+            ./home-manager/users/charlie
           ];
         };
         "charlie@the-toad" = home-manager.lib.homeManagerConfiguration {
@@ -146,10 +146,14 @@
             # Pull the overlays directly from your flake's output
             overlays = builtins.attrValues self.overlays;
           };
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie/charlie-on-the-toad
+            ./home-manager/hosts/the-toad
+            ./home-manager/users/charlie
             inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
@@ -160,10 +164,49 @@
             # Pull the overlays directly from your flake's output
             overlays = builtins.attrValues self.overlays;
           };
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
+          modules = [
+            ./home-manager/hosts/the-frog
+            ./home-manager/users/charlie
+            inputs.plasma-manager.homeModules.plasma-manager
+          ];
+        };
+
+        "guest@the-toad" = home-manager.lib.homeManagerConfiguration {
+          # Home-manager requires 'pkgs' instance
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            # Pull the overlays directly from your flake's output
+            overlays = builtins.attrValues self.overlays;
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
           modules = [
             # > Our main home-manager configuration file <
-            ./home-manager/profiles/charlie/charlie-on-the-frog
+            ./home-manager/hosts/the-toad
+            ./home-manager/users/guest
+            inputs.plasma-manager.homeModules.plasma-manager
+          ];
+        };
+        "guest@the-frog" = home-manager.lib.homeManagerConfiguration {
+          # Home-manager requires 'pkgs' instance
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            # Pull the overlays directly from your flake's output
+            overlays = builtins.attrValues self.overlays;
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+            constants = myConstants;
+          };
+          modules = [
+            ./home-manager/hosts/the-frog
+            ./home-manager/users/guest
             inputs.plasma-manager.homeModules.plasma-manager
           ];
         };

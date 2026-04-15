@@ -1,18 +1,17 @@
-# configuration for primary desktop system
 {
-  inputs,
   pkgs,
   ...
 }:
 {
+  description = "Configuration for zimaboard mini-pc server";
   imports = [
-    inputs.self.userProfiles.charlie
-    ./hardware-configuration.nix # unique to the primary desktop system
-    inputs.self.nixosModules.common-server
-    inputs.self.nixosModules.firebrowser-server
+    ../../users/charlie
+    ./hardware-configuration.nix
+    ../../../modules/nixos/common-server.nix
+    ../../../modules/nixos/firebrowser-service.nix
   ];
 
-  networking.hostName = "the-zima"; # unique to the primary desktop system
+  networking.hostName = "the-zima";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -34,12 +33,11 @@
       "defaults"
       "nofail"
       "compress=zstd"
-    ]; # zstd is great for btrfs performance
+    ];
   };
 
-  # This allows NixOS to recognize the RAID members you found earlier
+  # recognize the RAID members
   environment.systemPackages = with pkgs; [ mdadm ];
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
 }

@@ -1,19 +1,16 @@
-# configuration for primary desktop system
 {
-  inputs,
   ...
 }:
 {
+  description = "Configuration for laptop the-frog system";
   imports = [
-    inputs.self.userProfiles.charlie
-    ./hardware-configuration.nix # unique to the primary desktop system
-    inputs.self.nixosModules.common
-    inputs.self.nixosModules.plasma-desktop
-    inputs.self.nixosModules.development
+    ../../users/charlie
+    ./hardware-configuration.nix
+    ../../../modules/nixos/common.nix
+    ../../../modules/nixos/plasma-desktop.nix
+    ../../../modules/nixos/development.nix
   ];
 
-  networking.hostName = "the-frog"; # unique to the primary desktop system
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  networking.hostName = "the-frog";
   system.stateVersion = "25.05";
 }

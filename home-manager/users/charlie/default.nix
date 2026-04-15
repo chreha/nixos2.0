@@ -1,13 +1,12 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    # common settings
-    (inputs.self + /home-manager/common)
-    # this user profile's accounts
     ./accounts
-  ];
 
-  # setup the home directory and user specific packages
+    # feature sets
+    ../../features/communication
+    ../../features/developer
+  ];
   home = {
     username = "charlie";
     homeDirectory = "/home/charlie";
@@ -15,6 +14,8 @@
     # create a new feature in the so-you-want-to directory for larger package configurations
     packages = with pkgs; [
       cbonsai
+      dracula-theme
+      nixfmt-rfc-style
     ];
   };
 

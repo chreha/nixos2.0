@@ -1,22 +1,6 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
-  imports = [
-    (inputs.self + /home-manager/profiles/charlie)
-    (inputs.self + /home-manager/so-you-want-to/be-a-developer)
-    (inputs.self + /home-manager/so-you-want-to/be-a-communicator)
-    (inputs.self + /home-manager/so-you-want-to/be-a-gamer)
-  ];
-  home = {
-    packages = with pkgs; [
-      dracula-theme
-      nixfmt-rfc-style
-    ];
-  };
-
   programs = {
-    home-manager = {
-      enable = true;
-    };
     firefox = {
       enable = true;
       profiles.charlie = {
