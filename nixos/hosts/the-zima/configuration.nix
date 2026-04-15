@@ -42,4 +42,9 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
+
+  users.users.charlie.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdfqOg31FOaLYFtR00JalRK/j7HRcHAYkXR3t3tnKcF charlie@the-frog"
+  ];
+
 }
