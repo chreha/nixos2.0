@@ -57,12 +57,10 @@
       Host the-toad
         Hostname the-toad
         User charlie
-        IdentityFile ${config.age.secrets.ssh-to-the-toad.path}
 
       Host the-zima
         Hostname the-zima
         User charlie
-        IdentityFile ${config.age.secrets.ssh-to-the-zima.path}
     '';
   };
 

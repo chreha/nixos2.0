@@ -40,4 +40,10 @@
   environment.systemPackages = with pkgs; [ mdadm ];
 
   system.stateVersion = "25.11";
+
+  users.users.charlie.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdfqOg31FOaLYFtR00JalRK/j7HRcHAYkXR3t3tnKcF charlie@the-frog"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZTtndZISLL/CWmMauXvGvRDUXrRiwpMkmPuK5WzpV/ charlie@the-toad"
+  ];
+
 }
