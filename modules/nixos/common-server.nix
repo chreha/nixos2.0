@@ -6,9 +6,8 @@
 {
   imports = [
     # Feature modules
-    inputs.self.nixosModules.system
-    inputs.self.nixosModules.shell
-
+    ./shell.nix
+    ./system.nix
     inputs.agenix.nixosModules.default
   ];
   nix.gc = {

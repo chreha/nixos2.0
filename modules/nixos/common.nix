@@ -6,9 +6,9 @@
 {
   imports = [
     # Feature modules
-    inputs.self.nixosModules.system
-    inputs.self.nixosModules.networking
-    inputs.self.nixosModules.shell
+    ./shell.nix
+    ./system.nix
+    ./networking.nix
 
     inputs.agenix.nixosModules.default
   ];
