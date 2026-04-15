@@ -7,6 +7,7 @@
   # description = "Configuration for laptop the-frog system";
   imports = [
     ../../users/charlie
+    ../../users/guest
     ./hardware-configuration.nix
     ../../../modules/nixos/common.nix
     ../../../modules/nixos/plasma-desktop.nix
