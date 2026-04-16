@@ -43,6 +43,10 @@
         Hostname the-toad
         User charlie
 
+      Host the-frog
+        Hostname the-frog
+        User charlie
+
       Host the-zima
         Hostname the-zima
         User charlie
