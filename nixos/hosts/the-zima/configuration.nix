@@ -7,6 +7,7 @@
   # description = "Configuration for zimaboard mini-pc server";
   imports = [
     ../../users/charlie
+    ../../../modules/nixos/fleet-ssh.nix
     ./hardware-configuration.nix
     ../../../modules/nixos/common-server.nix
     ../../../modules/nixos/filebrowser-server.nix
@@ -37,18 +38,6 @@
     ];
   };
 
-  age.secrets.personal_key = {
-    file = ../../../secrets/toad_personal.age; # Path to encrypted file in flake
-    path = "/home/charlie/.ssh/id_ed25519.personal";
-    mode = "0600";
-    owner = "charlie";
-  };
-  age.secrets.work_key = {
-    file = ../../../secrets/toad_work.age; # Path to encrypted file in flake
-    path = "/home/charlie/.ssh/id_ed25519.work";
-    mode = "0600";
-    owner = "charlie";
-  };
   # recognize the RAID members
   environment.systemPackages = with pkgs; [ mdadm ];
 

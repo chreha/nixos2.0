@@ -11,10 +11,6 @@
       use-frankfurt-tunnel = "sudo tailscale set --exit-node=100.91.146.28";
       use-richmond-tunnel = "sudo tailscale set --exit-node=";
 
-      # SSH Key Management
-      use-personal-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519.personal";
-      use-work-ssh = "ssh-add -D && ssh-add ~/.ssh/id_ed25519.work";
-
       # Dynamic Rebuilds
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";
       rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)";
