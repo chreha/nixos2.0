@@ -24,7 +24,7 @@
     ];
     config.allowUnfree = true;
   };
-
+  environment.variables.EDITOR = "nano";
   # Enable Docker daemon
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";

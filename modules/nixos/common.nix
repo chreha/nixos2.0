@@ -26,6 +26,8 @@
     ];
     config.allowUnfree = true;
   };
+  environment.variables.EDITOR = "nano";
+
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
     vim
