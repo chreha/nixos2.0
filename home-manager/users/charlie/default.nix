@@ -22,19 +22,12 @@
   };
   programs.ssh = {
     enable = true;
-
+    enableDefaultConfig = false;
     matchBlocks = {
-      # When Charlie talks to GitHub, use the agenix-decrypted keys
       "github.com" = {
         hostname = "github.com";
-        # try personal then try work
-        identityFile = [
-          "/run/agenix/github-personal"
-          "/run/agenix/github-work"
-        ];
       };
 
-      # ssh commands for the Toad, Frog, and Zima
       "the-frog" = {
         hostname = "the-frog"; # Replace with actual IP or tailscale address
         user = "charlie";
@@ -69,6 +62,23 @@
           defaultBranch = "main";
         };
       };
+      includes = [
+        {
+          condition = "gitdir:~/Documents/Work-Github/";
+          contents = {
+            core.sshCommand = "ssh -i /run/agenix/github-work -o IdentitiesOnly=yes";
+            user.email = "charles@wearetripwire.com";
+          };
+        }
+        {
+          condition = "gitdir:~/Documents/Personal-Github/";
+          contents = {
+            core.sshCommand = "ssh -i /run/agenix/github-personal -o IdentitiesOnly=yes";
+            user.email = "charles.hreha@gmail.com";
+          };
+        }
+      ];
     };
+
   };
 }
