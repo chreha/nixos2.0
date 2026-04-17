@@ -31,15 +31,18 @@
       "the-frog" = {
         hostname = "the-frog"; # Replace with actual IP or tailscale address
         user = "charlie";
+        identityFile = "/run/agenix/github-personal";
       };
 
       "the-zima" = {
         hostname = "the-zima"; # Replace with actual IP
         user = "charlie";
+        identityFile = "/run/agenix/github-personal";
       };
       "the-toad" = {
         hostname = "the-toad"; # Replace with actual IP
         user = "charlie";
+        identityFile = "/run/agenix/github-personal";
       };
     };
   };
