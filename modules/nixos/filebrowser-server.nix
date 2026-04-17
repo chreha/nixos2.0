@@ -9,7 +9,7 @@
     ];
     cmd = [
       "--database"
-      "/database/filebrowser.db"
+      "/database.db"
     ];
     user = "1000:100"; # Run as 'charlie' (uid 1000) and group 'users' (gid 100)
   };
