@@ -77,6 +77,14 @@
             user.email = "charles.hreha@gmail.com";
           };
         }
+        {
+          # Add your dotfiles directory here
+          condition = "gitdir:~/dotfiles/";
+          contents = {
+            core.sshCommand = "ssh -i /run/agenix/github-personal -o IdentitiesOnly=yes";
+            user.email = "charles.hreha@gmail.com";
+          };
+        }
       ];
     };
 
