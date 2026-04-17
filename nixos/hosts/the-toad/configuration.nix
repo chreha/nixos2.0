@@ -8,13 +8,13 @@
   imports = [
     ../../users/charlie
     ../../users/guest
-    ../../../modules/nixos/fleet-ssh.nix
     ./hardware-configuration.nix
     ../../../modules/nixos/common.nix
     ../../../modules/nixos/plasma-desktop.nix
     ../../../modules/nixos/development.nix
     ../../../modules/nixos/nvidia.nix
     ../../../modules/nixos/steam.nix
+    ../../secrets
   ];
 
   networking.hostName = "the-toad";
@@ -59,9 +59,8 @@
       };
     };
   };
-  # authorize for this host specifically
   users.users.charlie.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGMm2KocGx8sbJY3pItCpNONmFG7JnjyKk9fszY/8n/ charlie.personal@the-frog"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWc0PwJEhUp9iP475J94WohR3c1/8fp/B7AXs99lduc brian@two"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7uluRYzR8q758nMYwSJKriYPsfGziXIdLSDj/HSCrA charlie"
   ];
 }

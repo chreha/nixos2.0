@@ -7,10 +7,10 @@
   # description = "Configuration for zimaboard mini-pc server";
   imports = [
     ../../users/charlie
-    ../../../modules/nixos/fleet-ssh.nix
     ./hardware-configuration.nix
     ../../../modules/nixos/common-server.nix
     ../../../modules/nixos/filebrowser-server.nix
+    ../../secrets
   ];
 
   networking.hostName = "the-zima";
@@ -42,4 +42,7 @@
   environment.systemPackages = with pkgs; [ mdadm ];
 
   system.stateVersion = "25.11";
+  users.users.charlie.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7uluRYzR8q758nMYwSJKriYPsfGziXIdLSDj/HSCrA charlie"
+  ];
 }
