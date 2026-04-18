@@ -35,36 +35,36 @@
 
   environment.systemPackages = [ pkgs.cifs-utils ];
 
-  # age.secrets.nas-credentials = {
-  #   file = ../../secrets/nas-credentials.age;
-  #   owner = "charlie";
-  #   mode = "600";
-  # };
-  # fileSystems."/mnt/the-pond" = {
-  #   device = constants.nasPath;
-  #   fsType = "cifs";
-  #   options = [
-  #     # Crucial: Automount waits until you access the folder to connect
-  #     "x-systemd.automount"
-  #     "noauto" # Don't try to mount immediately at boot
-  #     "x-systemd.idle-timeout=60" # Unmount after 60s of inactivity
-  #     "x-systemd.mount-timeout=5s"
-  #     "x-systemd.requires=network-online.target"
-  #     "nofail"
-  #     # Tailscale/Network helpers
-  #     "_netdev"
-  #     "x-systemd.after=tailscale.service" # Try to wait for tailscale
+  age.secrets.the-pond-samba-credentials = {
+    file = ../../secrets/the-pond-samba-credentials.age;
+    owner = "charlie";
+    mode = "600";
+  };
+  fileSystems."/mnt/the-pond" = {
+    device = constants.nasPath;
+    fsType = "cifs";
+    options = [
+      # Crucial: Automount waits until you access the folder to connect
+      "x-systemd.automount"
+      "noauto" # Don't try to mount immediately at boot
+      "x-systemd.idle-timeout=60" # Unmount after 60s of inactivity
+      "x-systemd.mount-timeout=5s"
+      "x-systemd.requires=network-online.target"
+      "nofail"
+      # Tailscale/Network helpers
+      "_netdev"
+      "x-systemd.after=tailscale.service" # Try to wait for tailscale
 
-  #     # Credentials from agenix
-  #     "credentials=${config.age.secrets.nas-credentials.path}"
+      # Credentials from agenix
+      "credentials=${config.age.secrets.the-pond-samba-credentials.path}"
 
-  #     # Permissions
-  #     "uid=1000"
-  #     "gid=100"
-  #     "dir_mode=0755"
-  #     "file_mode=0644"
-  #   ];
-  # };
+      # Permissions
+      "uid=1000"
+      "gid=100"
+      "dir_mode=0755"
+      "file_mode=0644"
+    ];
+  };
   fileSystems."/mnt/the-toad-ark" = {
     device = "//the-toad/Ark";
     fsType = "cifs";

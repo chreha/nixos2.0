@@ -28,6 +28,8 @@
   };
   environment.variables.EDITOR = "nano";
 
+  boot.supportedFilesystems = [ "cifs" ];
+
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
     vim
