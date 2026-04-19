@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../../modules/nixos/common-server.nix
     ../../../modules/nixos/filebrowser-server.nix
+    ../../../modules/nixos/vaultwarden.nix
     ../../secrets
   ];
 

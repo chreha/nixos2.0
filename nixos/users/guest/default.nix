@@ -9,6 +9,7 @@
   };
   # Wipe the guest home directory on every boot
   systemd.tmpfiles.rules = [
-    "R /home/guest 0700 guest users -"
+    "D /home/guest 0700 guest users - -"
   ];
+
 }

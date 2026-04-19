@@ -8,10 +8,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # TODO: look into setting up a nixOs server instead of zimaOS
     # TODO: look into Vaultwarden to setup on server
     # TODO: look into Jellyfin setup on server
-    # TODO: look into NAS setup on server
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
