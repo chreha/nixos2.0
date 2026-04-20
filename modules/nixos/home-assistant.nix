@@ -14,9 +14,13 @@
       "--network=host" # Critical for discovering Wi-Fi devices
       "--privileged" # Helps with USB dongle access later
     ];
-    dependsOn = [ "mnt-the-pond.automount" ];
-  };
 
+  };
+  # Manually extend the generated systemd service correctly:
+  systemd.services."docker-homeassistant" = {
+    after = [ "mnt-the\x2dpond.automount" ];
+    requires = [ "mnt-the\x2dpond.automount" ];
+  };
   # Tailscale sometimes triggers "RP Filter" blocks in Linux.
   # Setting this to loose ensures that traffic coming from your phone via Tailscale isn't dropped by the ZimaBoard's firewall.
   # Test without first, then enable if unable to connect via phone
