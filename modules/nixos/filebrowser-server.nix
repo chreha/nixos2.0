@@ -5,7 +5,7 @@
     ports = [ "8080:80" ]; # Access via http://zimaboard-ip:8080
     volumes = [
       "/mnt/the-pond:/srv" # Point FileBrowser to your RAID
-      "/var/lib/filebrowser/filebrowser.db:/database/filebrowser.db"
+      "/var/lib/filebrowser/filebrowser.db:/database.db" # Persistent database
     ];
     cmd = [
       "--database"
