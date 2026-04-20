@@ -8,7 +8,7 @@
     enable = true;
     config = {
       # Use your Tailscale MagicDNS name as the domain
-      DOMAIN = "the-zima";
+      DOMAIN = "https://the-zima";
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;
     };
