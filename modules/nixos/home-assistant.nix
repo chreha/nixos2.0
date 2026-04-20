@@ -18,8 +18,8 @@
   };
   # Manually extend the generated systemd service correctly:
   systemd.services."docker-homeassistant" = {
-    after = [ "mnt-the\x2dpond.automount" ];
-    requires = [ "mnt-the\x2dpond.automount" ];
+    after = [ "mnt-the\\x2dpond.mount" ];
+    requires = [ "mnt-the\\x2dpond.mount" ];
   };
   # Tailscale sometimes triggers "RP Filter" blocks in Linux.
   # Setting this to loose ensures that traffic coming from your phone via Tailscale isn't dropped by the ZimaBoard's firewall.
