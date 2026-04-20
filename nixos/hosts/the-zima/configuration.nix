@@ -11,6 +11,7 @@
     ../../../modules/nixos/common-server.nix
     ../../../modules/nixos/filebrowser-server.nix
     ../../../modules/nixos/vaultwarden.nix
+    ../../../modules/nixos/home-assistant.nix
     ../../secrets
   ];
 
@@ -19,6 +20,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
+
+  # For JellyFin Hardware Transcoding and camera feeds in home-assistant
+  # hardware.graphics.enable = true;
 
   # Enable software RAID support
   boot.swraid.enable = true;

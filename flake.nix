@@ -8,10 +8,12 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # TODO: look into Jellyfin setup on server
     # TODO: setup home assistant
-    # TODO: setup valheim server
+    # TODO: package uBlock and vaultwarden extensions into firefox config
+    # TODO: backup keys to vaultwarden
+    # TODO: look into Jellyfin setup on server
     # TODO: setup plasma-manager theme
+    # TODO: setup valheim server
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";

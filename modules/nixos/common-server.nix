@@ -46,9 +46,11 @@
 
     # Port 3389 is the standard for RDP (Remote Desktop)
     allowedTCPPorts = [
-      22
-      3389
-      8080
+      22 # SSH
+      3389 # RDP
+      8080 # filebrowser
+      8123 # home assistant
+      8222 # vaultwarden
     ];
   };
 
