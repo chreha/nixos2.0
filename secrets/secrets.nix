@@ -26,6 +26,10 @@ in
     host-the-frog
     host-the-zima
   ];
+  "vaultwarden-credentials.age".publicKeys = manager ++ [
+    host-the-frog
+    host-the-zima
+  ];
 
   # --- THE TOAD SECRETS ---
   "the-toad-github-personal.age".publicKeys = manager;
