@@ -12,6 +12,7 @@
     ../../../modules/nixos/filebrowser-server.nix
     ../../../modules/nixos/vaultwarden.nix
     ../../../modules/nixos/home-assistant.nix
+    ../../../modules/nixos/jellyfin.nix
     ../../secrets
   ];
 
