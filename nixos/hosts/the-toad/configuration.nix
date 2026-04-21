@@ -14,6 +14,7 @@
     ../../../modules/nixos/development.nix
     ../../../modules/nixos/nvidia.nix
     ../../../modules/nixos/steam.nix
+    ../../../modules/nixos/media-ripping.nix
     ../../secrets
   ];
 
