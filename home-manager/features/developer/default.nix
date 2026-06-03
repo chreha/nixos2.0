@@ -11,6 +11,7 @@
       dotnet-sdk
       dotnet-repl
       dotnet-runtime
+      wormhole-rs
       postman
       codeium
       nixd

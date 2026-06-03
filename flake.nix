@@ -8,12 +8,15 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # TODO: setup home assistant
     # TODO: package uBlock and vaultwarden extensions into firefox config
     # TODO: backup keys to vaultwarden
-    # TODO: look into Jellyfin setup on server
     # TODO: setup plasma-manager theme
     # TODO: setup valheim server
+
+    # TODO: Qobuz Web Player Alternative: create a
+    # dedicated Firefox profile for Qobuz
+    # with custom CSS or as a Progressive Web App (PWA)
+    # using tools like firefoxpwa.
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -107,6 +110,10 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/hosts/the-toad/configuration.nix
+            ({pkgs, ...}: {
+              programs.xwayland.enable = true;
+              environment.systemPackages = with pkgs; [ xwayland-run xwayland gamescope ];
+            })
           ];
         };
         the-frog = nixpkgs.lib.nixosSystem {

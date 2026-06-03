@@ -52,4 +52,13 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJkH8jsaaU4V0/+KETE1oTzgilMFq9Ka494e+xdZYAP github-personal@the-toad"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyWgDz2yH+tyu6Z7e+/kVtbY4iW8aNJte6y8wwlaUjR github-personal@the-frog"
   ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      80
+      5683
+      51827
+    ];
+    allowedUDPPorts = [ 5353 ];
+  };
 }

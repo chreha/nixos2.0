@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.steam = {
@@ -6,9 +6,8 @@
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     gamescopeSession.enable = true;
-
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
-
   # enable by adding this to the steam launch options
   # gamemoderun %command%
   # Reducing stutter and maximizing frame rates, especially on laptops or systems with aggressive power-saving settings.

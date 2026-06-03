@@ -2,6 +2,7 @@
   pkgs,
   constants,
   config,
+  lib,
   ...
 }:
 {
@@ -17,6 +18,7 @@
     allowedTCPPorts = [
       3389
       22
+      44443
     ];
 
     # Trust internal interfaces so services can talk to each other
@@ -65,6 +67,22 @@
       "file_mode=0644"
     ];
   };
+  security.pki.certificates = [
+    (lib.strings.join "\n" [
+      "-----BEGIN CERTIFICATE-----"
+      "MIIBhjCCASygAwIBAgIRAKmyGOiNZfy5eiaNwFYfHvIwCgYIKoZIzj0EAwIwITEf"
+      "MB0GA1UEAwwWQnJpYW4gfCBTdGVwQ0EgUm9vdCBDQTAeFw0yMjA4MDExNjUzNTJa"
+      "Fw0zMjA4MDExNjUzNTJaMCExHzAdBgNVBAMMFkJyaWFuIHwgU3RlcENBIFJvb3Qg"
+      "Q0EwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ+jbHULFNxsLl5Qzo+ka/p9rDe"
+      "m7V6OdxDyJlM7iqyVJjD4B7QB/USclMjgrYatYd/VCNh92L+m6JJDw2qjQbTo0Uw"
+      "QzAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQU"
+      "HDp7nXzA1Y8IniEK7PpPESwoMWswCgYIKoZIzj0EAwIDSAAwRQIhAOmzD2vdOmme"
+      "t16FHK/eBbphSd30ZDmaWHmbXlIDg/YJAiB1YCZ7vKQYI6n3wmaoJ/5vAlBlGePZ"
+      "UeShRDyXOcJMkA=="
+      "-----END CERTIFICATE-----"
+    ])
+  ];
+
   fileSystems."/mnt/the-toad-ark" = {
     device = "//the-toad/Ark";
     fsType = "cifs";
