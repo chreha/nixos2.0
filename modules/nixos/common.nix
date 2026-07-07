@@ -35,5 +35,6 @@
     vim
     git
     curl
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

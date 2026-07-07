@@ -40,6 +40,10 @@
       url = "github:dracula/konsole";
       flake = false; # This is a non-flake repo, we just want the files
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -110,10 +114,17 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/hosts/the-toad/configuration.nix
-            ({pkgs, ...}: {
-              programs.xwayland.enable = true;
-              environment.systemPackages = with pkgs; [ xwayland-run xwayland gamescope ];
-            })
+            (
+              { pkgs, ... }:
+              {
+                programs.xwayland.enable = true;
+                environment.systemPackages = with pkgs; [
+                  xwayland-run
+                  xwayland
+                  gamescope
+                ];
+              }
+            )
           ];
         };
         the-frog = nixpkgs.lib.nixosSystem {
