@@ -13,6 +13,7 @@
     ../../../modules/nixos/vaultwarden.nix
     ../../../modules/nixos/home-assistant.nix
     ../../../modules/nixos/jellyfin.nix
+    ../../../modules/nixos/valheim.nix
     ../../secrets
   ];
 

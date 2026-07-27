@@ -16,6 +16,7 @@
 
     # Port 3389 is the standard for RDP (Remote Desktop)
     allowedTCPPorts = [
+      3100
       3389
       22
       44443

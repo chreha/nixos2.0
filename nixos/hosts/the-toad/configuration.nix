@@ -23,7 +23,7 @@
 
   fileSystems."/mnt/Ark" = {
     device = "/dev/disk/by-uuid/1ED0FEBCD0FE996B";
-    fsType = "ntfs3";
+    fsType = "ntfs";
     options = [
       "nofail"
       "x-systemd.automount"

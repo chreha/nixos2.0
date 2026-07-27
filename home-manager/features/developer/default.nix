@@ -16,6 +16,7 @@
       codeium
       nixd
       google-chrome
+      gitui
     ];
   };
   xdg.enable = true;
@@ -78,6 +79,7 @@
           esbenp.prettier-vscode
           yoavbls.pretty-ts-errors
           bradlc.vscode-tailwindcss
+          csstools.postcss
 
         ]);
       userSettings = {
