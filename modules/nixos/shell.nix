@@ -15,6 +15,10 @@
       rebuild-system = "sudo nixos-rebuild switch --flake $HOME/dotfiles#$(hostname)";
       rebuild-user = "home-manager switch --flake $HOME/dotfiles#$(whoami)@$(hostname) -b backup-$(date +%Y%m%d-%H%M)";
       remove-garbage = "nix-deep-clean";
+
+      # tailscale switching
+      use-work-tailscale = "sudo tailscale switch wearetripwire.org.github";
+      use-personal-tailscale = "sudo tailscale switch chreha.github";
     };
     interactiveShellInit = ''
       direnv hook fish | source

@@ -34,6 +34,8 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    dig
+    traceroute
     curl
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

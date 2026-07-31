@@ -12,7 +12,6 @@
 
     extraOptions = [
       "--cap-add=sys_nice"
-      "--stop-timeout 120"
     ];
 
     autoStart = true;
