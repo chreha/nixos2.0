@@ -19,6 +19,8 @@
       # tailscale switching
       use-work-tailscale = "sudo tailscale switch wearetripwire.org.github";
       use-personal-tailscale = "sudo tailscale switch chreha.github";
+
+      toggle-browser = "toggle_browser";
     };
     interactiveShellInit = ''
       direnv hook fish | source
@@ -33,7 +35,17 @@
         echo "✅ Cleanup complete! Current /nix size:"
         du -sh /nix
       end
+      function toggle_browser
+        if test (handlr get text/html) = "zen.desktop"
+            handlr set text/html google-chrome.desktop
+            echo "Switched to Chrome"
+        else
+            handlr set text/html zen.desktop
+            echo "Switched to Zen Browser"
+        end
+      end
     '';
+
   };
 
   programs.direnv.enable = true;

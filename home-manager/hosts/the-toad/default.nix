@@ -22,6 +22,7 @@
       dracula-theme
       nixfmt-rfc-style
       libreoffice
+      handlr-regex
     ];
   };
 }

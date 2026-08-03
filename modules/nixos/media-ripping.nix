@@ -7,5 +7,7 @@
     handbrake
     libbluray
     vlc
+    cdparanoiaIII
+    beets
   ];
 }
