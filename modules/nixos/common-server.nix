@@ -16,6 +16,7 @@ in
     enable = true;
     package = unstable.docker;
   };
+  virtualisation.oci-containers.backend = "docker";
   imports = [
     # Feature modules
     ./shell.nix
