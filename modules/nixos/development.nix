@@ -1,10 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
-  # Enable Docker daemon
   virtualisation.docker = {
     enable = true;
-    package = pkgs.docker_29;
+    package = unstable.docker;
   };
+
+  virtualisation.oci-containers.backend = "docker";
 
   # Compatibility layer for unpatched binaries (VS Code, Node, etc.)
   programs.nix-ld = {
