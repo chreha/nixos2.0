@@ -1,5 +1,11 @@
 { pkgs, inputs, ... }:
 
+let
+  pkgsUnstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 {
   home = {
     sessionVariables = {
@@ -10,13 +16,13 @@
       bun
       dotnet-sdk
       dotnet-repl
-      dotnet-runtime
       wormhole-rs
       postman
       codeium
       nixd
       google-chrome
       gitui
+      pkgsUnstable.zed-editor-fhs
     ];
   };
   xdg.enable = true;
@@ -47,8 +53,6 @@
           ms-dotnettools.vscode-dotnet-runtime
           ms-dotnettools.csharp
           ms-dotnettools.csdevkit
-          # theme
-          dracula-theme.theme-dracula
         ])
         ++ (with pkgs.vscode-marketplace; [
           # --- Marketplace-only Extensions (from overlay) ---

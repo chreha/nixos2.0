@@ -14,7 +14,6 @@
     # create a new feature in the so-you-want-to directory for larger package configurations
     packages = with pkgs; [
       cbonsai
-      dracula-theme
       nixfmt-rfc-style
       gopass
 
@@ -86,6 +85,14 @@
           contents = {
             core.sshCommand = "ssh -i /run/agenix/github-personal -o IdentitiesOnly=yes";
             user.email = "charles.hreha@gmail.com";
+          };
+        }
+        {
+          # Add gopass directory
+          condition = "gitdir:~/.local/share/gopass/stores/tpwr/";
+          contents = {
+            core.sshCommand = "ssh -i /run/agenix/github-work -o IdentitiesOnly=yes";
+            user.email = "charles@wearetripwire.com";
           };
         }
       ];

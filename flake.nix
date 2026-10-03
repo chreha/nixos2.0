@@ -35,11 +35,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # terminal theme
-    dracula-konsole = {
-      url = "github:dracula/konsole";
-      flake = false; # This is a non-flake repo, we just want the files
-    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

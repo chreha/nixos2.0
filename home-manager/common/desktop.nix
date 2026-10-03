@@ -17,16 +17,12 @@
       enable = true;
       defaultProfile = "NixProfile";
 
-      customColorSchemes = {
-        Dracula = "${inputs.dracula-konsole}/Dracula.colorscheme";
-      };
       profiles.NixProfile = {
         name = "NixProfile";
         font = {
           name = "JetBrainsMono Nerd Font";
           size = 16; # Set your desired terminal font size here
         };
-        colorScheme = "Dracula";
       };
     };
   };

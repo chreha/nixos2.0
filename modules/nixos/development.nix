@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   # Enable Docker daemon
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    package = pkgs.docker_29;
+  };
 
   # Compatibility layer for unpatched binaries (VS Code, Node, etc.)
   programs.nix-ld = {

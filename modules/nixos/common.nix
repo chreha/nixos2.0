@@ -39,4 +39,22 @@
     curl
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  # Enable CUPS to print documents
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.brlaser # Open-source driver for Brother laser printers
+      pkgs.cups-filters
+      pkgs.cups-browsed
+    ];
+  };
+
+  # Enable Avahi for network printer discovery (.local / mDNS)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # Resolve IPv4 mDNS hostnames
+    openFirewall = true; # Open UDP port 5353 for discovery
+  };
+
 }
