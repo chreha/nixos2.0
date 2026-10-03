@@ -4,7 +4,6 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    settings.rejectDueToRemoteAccessDisabled = false;
   };
 
   environment.systemPackages = [
