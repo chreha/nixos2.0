@@ -3,7 +3,19 @@
   pkgs,
   ...
 }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
+  virtualisation.docker = {
+    enable = true;
+    package = unstable.docker;
+  };
   imports = [
     # Feature modules
     ./shell.nix
@@ -25,9 +37,6 @@
     config.allowUnfree = true;
   };
   environment.variables.EDITOR = "nano";
-  # Enable Docker daemon
-  virtualisation.docker.enable = true;
-  virtualisation.oci-containers.backend = "docker";
 
   # Global packages available on all hosts
   environment.systemPackages = with pkgs; [
